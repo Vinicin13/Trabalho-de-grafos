@@ -110,14 +110,14 @@ def busca_in_Largura(Grafo, VInicial,tipo):
         Q = [VInicial]
         R = [VInicial]
         desc[VInicial] = 1
-        nivel = [0 for i in range(len(Grafo))]  # Cria lista de niveis
-        nivel[VInicial] = 0  # grava o nivel inicial
-        realmenor = []  # auxiliar pra guardar o menor nivel que esta ligado o vertice
+        nivel = [0 for i in range(len(Grafo))]  
+        nivel[VInicial] = 0  
+        realmenor = []  
 
         while len(Q) != 0:
 
             u = Q.pop(0)
-            for i in range(len(Grafo[u])):  # percorre a linha u da matriz
+            for i in range(len(Grafo[u])):  
                 if Grafo[u][i] != 0:
                     if desc[i] == 0:
                         nivel[i] = nivel[u] + 1
@@ -280,7 +280,7 @@ def componentes_conexos(Grafo,VInicial = 0):
         Maior = len(R)
     if Menor > len(R):
         Menor = len(R)
-    vprint = []  ##Guarda as componentes conexas
+    vprint = []  
     vprint.append("-- %d vertices" % (len(R)))
     for v in range(len(desc)):
         if desc[v] == 0:
@@ -289,10 +289,7 @@ def componentes_conexos(Grafo,VInicial = 0):
                 if Grafo[x][v] != 0 or Grafo[v][x]:
                     conexo = conexo + 1
                     break
-        if count != conexo and desc[v] == 0:  ##Descobre quando a componente não conexa existe
-            ##Funçao similiar para conseguir fazer a busca recursiva
-            ##Retira dois paramentros e adiciona dois
-            ##Passa os descobertos e a lista com os descobertos(String)
+        if count != conexo and desc[v] == 0:
             Q = [v]
             R = [v]
             desc[v] = 1
