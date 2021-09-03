@@ -50,7 +50,7 @@ def menu_ArquivoTeste(percurso):
             arquivo = open("example.txt", "r")
             ma = Funções.matriz(arquivo)
             VerticeI = int(input("Qual o vertice inical da busca?"))
-            Funções.busca_in_Largura(ma,VerticeI)
+            Funções.busca_in_Largura(ma,VerticeI,1)
             return (menu_ArquivoTeste(opção1))
 
         if opção1 == 5:
@@ -107,19 +107,26 @@ def menu_ArquivoColaboração(percurso):
             VerticeI = int(input("Qual o vertice inical da busca?"))
             tipo = int(input("Deseja operar usando Lista:Digite 2\nDeseja operar usando Matriz:Digite 1"))
             if tipo == 1:
-               Funções.busca_in_Profundidade(ma, VerticeI, tipo)
+               Funções.busca_in_Largura(ma, VerticeI, tipo)
                return (menu_ArquivoColaboração(opção2))
 
             if tipo == 2:
-                Funções.busca_in_Profundidade(li, VerticeI, tipo)
+                Funções.busca_in_Largura(li, VerticeI, tipo)
                 return (menu_ArquivoColaboração(opção2))
 
         if opção2 == 5:
             arquivo = open("collaboration_graph.txt", "r")
             ma = Funções.matriz(arquivo)
+            li = Funções.lista(arquivo)
             VerticeI = int(input("Qual o vertice inical da busca?"))
-            Funções.busca_in_Profundidade(ma,VerticeI,1)
-            return (menu_ArquivoColaboração(opção2))
+            tipo = int(input("Deseja operar usando Lista:Digite 2\nDeseja operar usando Matriz:Digite 1"))
+            if tipo == 1:
+                Funções.busca_in_Profundidade(ma, VerticeI, tipo)
+                return (menu_ArquivoColaboração(opção2))
+
+            if tipo == 2:
+                Funções.busca_in_Profundidade(li, VerticeI, tipo)
+                return (menu_ArquivoColaboração(opção2))
 
         if opção2 == 6:
             arquivo = open("collaboration_graph.txt", "r")
