@@ -23,10 +23,17 @@ def menu():
 def menu_ArquivoTeste(percurso):
 
     while percurso != 8:
-        print("Arquivo de Teste 'example.txt':\n Escolha de 1 a 7 entre:\n 1- Representar em forma de Lista\n"
+        print("Arquivo de Teste 'example.txt':\n Escolha de 0 a 7 entre:\n 0- Gerar grafico \n 1- Representar em forma de Lista\n"
           " 2- Representar em forma de Matriz\n 3- Informações desse grafo\n 4- Gerar arquivo de saida de uma Busca em Largura\n"
               " 5- Gerar arquivo de saida de uma Busca em Profundidade\n 6- Componentes Conexas\n 7- Voltar ao Menu Principal\n 8- Sair")
         opção1 = int(input("Opção:"))
+
+        if opção1 == 0:
+            arquivo = open("example.txt","r")
+            ma = Funções.matriz(arquivo)
+            grau = Funções.informacoes(ma)
+            Funções.gerar_Grafico(grau)
+            return(menu_ArquivoTeste(opção1))
 
         if opção1 == 1:
             arquivo = open("example.txt","r")
@@ -76,10 +83,17 @@ def menu_ArquivoTeste(percurso):
 def menu_ArquivoColaboração(percurso):
 
     while percurso != 8:
-        print("Arquivo de Colaborações em pesquisa 'collaboration_graph.txt':\n Escolha de 1 a 7 entre:\n 1- Representar em forma de Lista\n"
+        print("Arquivo de Colaborações em pesquisa 'collaboration_graph.txt':\n Escolha de 0 a 7 entre:\n 0- Gerar grafico\n 1- Representar em forma de Lista\n"
           " 2- Representar em forma de Matriz\n 3- Informações desse grafo\n 4- Gerar arquivo de saida de uma Busca em Largura\n"
               " 5- Gerar arquivo de saida de uma Busca em Profundidade\n 6- Componentes Conexas\n 7- Voltar ao Menu Principal\n 8- Sair")
         opção2 = int(input("Opção:"))
+
+        if opção2 == 0:
+            arquivo = open("collaboration_graph.txt", "r")
+            ma = Funções.matriz(arquivo)
+            grau = Funções.informacoes(ma)
+            Funções.gerar_Grafico(grau)
+            return (menu_ArquivoColaboração(opção2))
 
         if opção2 == 1:
             arquivo = open("collaboration_graph.txt","r")
@@ -143,11 +157,18 @@ def menu_ArquivoColaboração(percurso):
 def menu_ArquivoConexões(percurso):
 
     while percurso != 8:
-        print("Arquivo de Coxexões da web 'as graph.txt':\n Escolha de 1 a 7 entre:\n 1- Representar em forma de Lista\n"
+        print("Arquivo de Coxexões da web 'as graph.txt':\n Escolha de 0 a 7 entre:\n 0- Gerar Grafico\n 1- Representar em forma de Lista\n"
           " 2- Representar em forma de Matriz\n 3- Informações desse grafo\n 4- Gerar arquivo de saida de uma Busca em Largura\n"
               " 5- Gerar arquivo de saida de uma Busca em Profundidade\n 6- Componentes Conexas\n 7- Voltar ao Menu Principal\n 8- Sair")
         opção3 = int(input("Opção:"))
 
+        if opção3 == 0:
+            arquivo = open("as_graph.txt", "r")
+            ma = Funções.matriz(arquivo)
+            grau = Funções.informacoes(ma)
+            Funções.gerar_Grafico(grau)
+
+            return (menu_ArquivoConexões(opção3))
         if opção3 == 1:
             arquivo = open("as_graph.txt","r")
             li = Funções.lista(arquivo)
