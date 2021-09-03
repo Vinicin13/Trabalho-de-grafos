@@ -105,6 +105,7 @@ def informacoes(Grafo):
 def busca_in_Largura(Grafo, VInicial,tipo):
     if tipo == 1:
         print("Matriz")
+        start = time.time()
         desc = [0 for i in range(len(Grafo))]
         Q = [VInicial]
         R = [VInicial]
@@ -145,9 +146,12 @@ def busca_in_Largura(Grafo, VInicial,tipo):
         for i in range(len(nivel)):
             if nivel[i] != nivel[VInicial] or i == VInicial:
                 arquivo.write("%d : %d \n" % (i, nivel[i]))
+        End = time.time()
+        print(End - start, "milesegundos")
         return nivel
     elif tipo == 2:
         print("Lista")
+        start = time.time()
 
         desc = [0 for i in range(len(Grafo))]
         Q = [VInicial]
@@ -187,6 +191,9 @@ def busca_in_Largura(Grafo, VInicial,tipo):
         for i in range(len(nivel)):
             if nivel[i] != nivel[VInicial] or i == VInicial:
                 arquivo.write("%d : %d \n" % (i, nivel[i]))
+
+        End = time.time()
+        print(End - start, "milesegundos")
         return nivel
 
 
@@ -282,8 +289,10 @@ def componentes_conexos(Grafo,VInicial = 0):
                 if Grafo[x][v] != 0 or Grafo[v][x]:
                     conexo = conexo + 1
                     break
-        if count != conexo and desc[v] == 0:  
-            
+        if count != conexo and desc[v] == 0:  ##Descobre quando a componente não conexa existe
+            ##Funçao similiar para conseguir fazer a busca recursiva
+            ##Retira dois paramentros e adiciona dois
+            ##Passa os descobertos e a lista com os descobertos(String)
             Q = [v]
             R = [v]
             desc[v] = 1
